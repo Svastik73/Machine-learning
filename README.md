@@ -1,3 +1,3 @@
 # Machine-learning
-<img src="https://cdn-images-1.medium.com/max/2600/0*PuscwCsUr09xZ0SJ.gif">
+<img src="http://cdn-images-1.medium.com/max/640/1*eeIvlwkMNG1wSmj3FR6M2g.gif">
 <H3> Linear regression code in python.</h3>
