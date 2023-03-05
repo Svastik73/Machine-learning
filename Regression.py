@@ -13,7 +13,7 @@ y_train=[17.592  ,  9.1302 , 13.662,   11.854   , 6.8233 , 11.886   , 4.3483 , 1
   5.3048  , 0.56077,  3.6518 ,  5.3893 ,  3.1386 , 21.767   , 4.263  ,  5.1875,  3.0825 , 22.638  , 13.501   , 7.0467 , 14.692   ,24.147  , -1.22   ,  5.9966,
  12.134  , 1.8495 ,  6.5426   ,4.5623  , 4.1164   ,3.3928 , 10.117   , 5.4974,  0.55657,  3.9115 ,  5.3854  , 2.4406  , 6.7318  , 1.0463 ,  5.1337 ,  1.844,
   8.0043   ,1.0179  , 6.7504  , 1.8396  , 4.2885  , 4.9981  , 1.4233 , -1.4211,  2.4756 ,  4.6042  , 3.9624 ,  5.4141  , 5.1694  ,-0.74279 ,17.929  , 12.054,
- 17.054  ,  4.8852  , 5.7442 ,  7.7754  ,, 1.0173,  20.992  ,  6.6799,   4.0259,  1.2784  ,3.3411 , -2.6807  , 0.29678  ,3.8845  , 5.7014 ,  6.7526  , 2.0576,
+ 17.054  ,  4.8852  , 5.7442 ,  7.7754  , 1.0173,  20.992  ,  6.6799,   4.0259,  1.2784  ,3.3411 , -2.6807  , 0.29678  ,3.8845  , 5.7014 ,  6.7526  , 2.0576,
   0.47953 , 0.20421 , 0.67861,  7.5435  , 5.3436 ,  4.2415 ,  6.7981  , 0.92695,  0.152   , 2.8214  , 1.8451   ,4.2959 ,  7.2029 ,  1.9869  , 0.14454 , 9.0551,
   0.61705]
 # y_train is monthly profit /10000
@@ -31,7 +31,7 @@ plt.xlabel('Population of City in 10,000s')
 plt.show()
 
 def compute_cost(x, y, w, b): 
-    m = x.shape[0] 
+    m = len(x)
     total_cost = 0
     for i in range(m):
         total_cost += ((w*x[i]+b - y[i])**2)/(2*m)
@@ -46,8 +46,7 @@ print(f'Cost at initial w: {cost:.3f}')
 
 def compute_gradient(x, y, w, b): 
  
-    m = x.shape[0]
- 
+    m = len(x)
     dj_dw = 0
     dj_db = 0
     for i in range(m):
@@ -59,25 +58,8 @@ initial_b = 0
 
 tmp_dj_dw, tmp_dj_db = compute_gradient(x_train, y_train, initial_w, initial_b)
 print('Gradient at initial w, b (zeros):', tmp_dj_dw, tmp_dj_db)
+
 def gradient_descent(x, y, w_in, b_in, cost_function, gradient_function, alpha, num_iters): 
-    """
-    Performs batch gradient descent to learn theta. Updates theta by taking 
-    num_iters gradient steps with learning rate alpha
-    
-    Args:
-      x :    (ndarray): Shape (m,)
-      y :    (ndarray): Shape (m,)
-      w_in, b_in : (scalar) Initial values of parameters of the model
-      cost_function: function to compute cost
-      gradient_function: function to compute the gradient
-      alpha : (float) Learning rate
-      num_iters : (int) number of iterations to run gradient descent
-    Returns
-      w : (ndarray): Shape (1,) Updated values of parameters of the model after
-          running gradient descent
-      b : (scalar)                Updated value of parameter of the model after
-          running gradient descent
-    """
     
     # number of training examples
     m = len(x)
@@ -117,7 +99,7 @@ alpha = 0.01
 w,b,_,_ = gradient_descent(x_train ,y_train, initial_w, initial_b, 
                      compute_cost, compute_gradient, alpha, iterations)
 print("w,b found by gradient descent:", w, b)
-m = x_train.shape[0]
+m = len(x_train)
 
 predicted = np.zeros(m)
 
