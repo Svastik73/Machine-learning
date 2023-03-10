@@ -1,2 +1,2 @@
 <h1> LOGISTIC REGRESSION  </h1>
-<img src="https://miro.medium.com/v2/resize:fit:1400/1*XRCJt-5yNXDfzrVbEbh4DA.gif" width="200" height ="400">
+<img src="https://miro.medium.com/max/1400/1*EDtkFttM198K3TvW_A_hoQ.gif" width="200" height ="400">
